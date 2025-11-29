@@ -1,7 +1,10 @@
-module com.example.rhaf {
+module com.example.carrental {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    requires java.desktop;
+    requires java.sql;
+
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -11,6 +14,13 @@ module com.example.rhaf {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.rhaf to javafx.fxml;
-    exports com.example.rhaf;
+    opens com.example.carrental to javafx.fxml;
+    opens com.example.carrental.model to javafx.fxml;
+    opens com.example.carrental.controller to javafx.fxml;
+    opens com.example.carrental.view to javafx.fxml;
+    exports com.example.carrental.controller;
+    exports com.example.carrental.model;
+
+
+    exports com.example.carrental;
 }

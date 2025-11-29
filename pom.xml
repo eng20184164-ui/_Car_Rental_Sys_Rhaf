@@ -15,6 +15,12 @@
     </properties>
 
     <dependencies>
+            <!-- SQLite JDBC -->
+            <dependency>
+                <groupId>org.xerial</groupId>
+                <artifactId>sqlite-jdbc</artifactId>
+                <version>3.41.2.2</version>
+            </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -133,7 +139,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.rhaf/com.example.rhaf.HelloApplication</mainClass>
+                            <mainClass>com.example.carrental.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
