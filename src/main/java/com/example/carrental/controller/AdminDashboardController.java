@@ -463,7 +463,7 @@ public class AdminDashboardController {
     @FXML
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/carrental/view/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/carrental/view/login.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) welcomeLabel.getScene().getWindow();

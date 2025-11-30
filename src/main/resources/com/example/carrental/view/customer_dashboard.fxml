@@ -217,7 +217,7 @@
 
     <!-- ======= BOTTOM (STATUS BAR) ======= -->
     <bottom>
-        <HBox spacing="15" alignment="CENTER" styleClass="status-bar">
+        <HBox spacing="20" alignment="CENTER" styleClass="status-bar">
             <padding>
                 <Insets top="10" right="15" bottom="10" left="15"/>
             </padding>

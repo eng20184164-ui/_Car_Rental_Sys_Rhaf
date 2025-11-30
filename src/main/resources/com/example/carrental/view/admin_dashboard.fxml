@@ -9,8 +9,7 @@
 <VBox alignment="CENTER" spacing="30.0"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.carrental.controller.AdminDashboardController"
-      stylesheets="@styles/style.css"
-      styleClass="dashboard-root">
+      stylesheets="@styles/style_2.css">
 
     <!-- ====== HEADER ====== -->
     <VBox spacing="15" styleClass="dashboard-header">
@@ -156,13 +155,13 @@
 
                                     <TableColumn text="Customer" prefWidth="150">
                                         <cellValueFactory>
-                                            <PropertyValueFactory property="customerName"/>
+                                            <PropertyValueFactory property="customer"/>
                                         </cellValueFactory>
                                     </TableColumn>
 
                                     <TableColumn text="Car" prefWidth="150">
                                         <cellValueFactory>
-                                            <PropertyValueFactory property="carInfo"/>
+                                            <PropertyValueFactory property="car"/>
                                         </cellValueFactory>
                                     </TableColumn>
 

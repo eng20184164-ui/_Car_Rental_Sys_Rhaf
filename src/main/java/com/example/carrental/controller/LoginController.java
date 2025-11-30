@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -139,6 +140,10 @@ public class LoginController {
             Stage stage = (Stage) customerEmailField.getScene().getWindow();
             stage.setScene(new Scene(root, 1000, 700));
             stage.setTitle("Car Rental System - Customer Dashboard - " + customer.getName());
+            stage.setMaximized(true);
+
+
+
 
         } catch (Exception e) {
             showError("Navigation Error", "Cannot open customer dashboard: " + e.getMessage());
@@ -155,6 +160,8 @@ public class LoginController {
             Stage stage = (Stage) adminUsernameField.getScene().getWindow();
             stage.setScene(new Scene(root, 1200, 800));
             stage.setTitle("Car Rental System - Admin Dashboard - " + admin.getName());
+            stage.setMaximized(true);
+
 
         } catch (Exception e) {
             showError("Navigation Error", "Cannot open admin dashboard: " + e.getMessage());
