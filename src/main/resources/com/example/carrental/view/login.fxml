@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="30.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.carrental.controller.LoginController"
+      stylesheets="@styles/style.css"
+      styleClass="login-container">
+
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="20.0"
+          prefWidth="500" prefHeight="500">
+        <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+        </padding>
+
+        <!-- العنوان الرئيسي -->
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="🚗 Car Rental System" styleClass="stylish-text"/>
+            <Label text="Rent Your Dream Car Today" styleClass="title-sub"/>
+        </VBox>
+
+        <!-- علامات التبويب -->
+        <TabPane prefWidth="400" prefHeight="300" styleClass="hover-effect">
+            <tabs>
+                <Tab text="Customer Login" closable="false">
+                    <VBox spacing="20" alignment="CENTER">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                        </padding>
+
+                        <VBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="Email Address" styleClass="label-bold"/>
+                            <TextField fx:id="customerEmailField" promptText="Enter your email"
+                                       style="-fx-pref-width: 300px; -fx-pref-height: 40px;"/>
+                        </VBox>
+
+                        <VBox spacing="15" alignment="CENTER">
+                            <Button text="Login as Customer" onAction="#handleCustomerLogin"
+                                    style="-fx-pref-width: 200px; -fx-pref-height: 40px;"
+                                    styleClass="primary-button"/>
+
+                            <Button text="Register New Customer" onAction="#handleCustomerRegistration"
+                                    style="-fx-pref-width: 200px; -fx-pref-height: 35px;"
+                                    styleClass="success-button"/>
+
+
+                        </VBox>
+                    </VBox>
+                </Tab>
+
+                <Tab text="Admin Login" closable="false">
+                    <VBox spacing="20" alignment="CENTER">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                        </padding>
+
+                        <VBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="Username" styleClass="label-bold"/>
+                            <TextField fx:id="adminUsernameField" promptText="Enter username"
+                                       style="-fx-pref-width: 300px; -fx-pref-height: 40px;"/>
+                        </VBox>
+
+                        <VBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="Password" styleClass="label-bold"/>
+                            <PasswordField fx:id="adminPasswordField" promptText="Enter password"
+                                           style="-fx-pref-width: 300px; -fx-pref-height: 40px;"/>
+                        </VBox>
+
+                        <Button text="Login as Admin" onAction="#handleAdminLogin"
+                                style="-fx-pref-width: 200px; -fx-pref-height: 35px;"
+                                styleClass="primary-button"/>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+        <!-- رسائل النظام -->
+<!--        <Label fx:id="messageLabel" styleClass="error-message"-->
+<!--               prefWidth="350" wrapText="true"/>-->
+
+        <!-- معلومات إضافية -->
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="Need Help?" style="-fx-font-size: 12px; -fx-text-fill: #ffffff;"/>
+            <Label text="Contact: support@carrental.com" style="-fx-font-size: 11px; -fx-text-fill: #ffffff;"/>
+        </VBox>
+    </VBox>
+</VBox>

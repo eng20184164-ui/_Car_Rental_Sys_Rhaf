@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<VBox alignment="CENTER" spacing="30.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.carrental.controller.AdminDashboardController"
+      stylesheets="@styles/style_2.css">
+
+    <!-- ====== HEADER ====== -->
+    <VBox spacing="15" styleClass="dashboard-header">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Text text="Car Rental System" styleClass="dashboard-title"/>
+                <Text text="Admin Dashboard"
+                      style="-fx-fill: #e3f2fd; -fx-font-size: 14px;"/>
+            </VBox>
+
+            <Label fx:id="welcomeLabel"
+                   style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="🚪 Logout"
+                    onAction="#handleLogout"
+                    styleClass="danger-button"/>
+        </HBox>
+
+        <!-- شريط الإحصائيات -->
+        <HBox spacing="30" alignment="CENTER">
+            <Label fx:id="statsLabel"
+                   style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+        </HBox>
+    </VBox>
+
+    <!-- ====== MAIN CONTENT (TABS) ====== -->
+    <TabPane VBox.vgrow="ALWAYS">
+        <tabs>
+
+            <!-- === Tab 1: Manage Cars === -->
+            <Tab text="🚗 Manage Cars" closable="false">
+                <content>
+                    <VBox spacing="15">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Button text="➕ Add New Car"
+                                    onAction="#handleAddCar"
+                                    styleClass="success-button"/>
+                            <Button text="🔄 Refresh"
+                                    onAction="#handleRefreshCars"
+                                    styleClass="primary-button"/>
+                        </HBox>
+
+                        <VBox spacing="10" styleClass="card">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+
+                            <Label text="Cars Management"
+                                   style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+                            <TableView fx:id="carsTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn text="ID" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="carId"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Brand" prefWidth="120">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="brand"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Model" prefWidth="120">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="model"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Year" prefWidth="80">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="year"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Color" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="color"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Price/Day" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="pricePerDay"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Available" prefWidth="80">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="available"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- === Tab 2: Manage Reservations === -->
+            <Tab text="📋 Manage Reservations" closable="false">
+                <content>
+                    <VBox spacing="15">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Filter by status:"
+                                   style="-fx-font-weight: bold;"/>
+                            <ComboBox fx:id="reservationFilterCombo" prefWidth="120"/>
+                            <Button text="🔄 Refresh"
+                                    onAction="#handleRefreshReservations"
+                                    styleClass="primary-button"/>
+                        </HBox>
+
+                        <VBox spacing="10" styleClass="card">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+
+                            <Label text="Reservations Management"
+                                   style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+                            <TableView fx:id="reservationsTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn text="Reservation ID" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="reservationId"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Customer" prefWidth="150">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="customer"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Car" prefWidth="150">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="car"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Start Date" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="startDate"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="End Date" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="endDate"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Total Price" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="totalPrice"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Status" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="status"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- === Tab 3: Manage Customers === -->
+            <Tab text="👥 Manage Customers" closable="false">
+                <content>
+                    <VBox spacing="15">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Button text="🔄 Refresh"
+                                    onAction="#handleRefreshCustomers"
+                                    styleClass="primary-button"/>
+                        </HBox>
+
+                        <VBox spacing="10" styleClass="card">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+
+                            <Label text="Customers Management"
+                                   style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+                            <TableView fx:id="customersTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn text="ID" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="customerId"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Name" prefWidth="150">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="name"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Phone" prefWidth="120">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="phone"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn text="Email" prefWidth="200">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="email"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- === Tab 4: Reports === -->
+            <!-- استبدل محتويات تب Reports بالكامل بهذا: -->
+            <Tab text="📊 Reports" closable="false">
+                <ScrollPane fitToWidth="true" fitToHeight="true">
+                    <VBox spacing="25">
+                        <padding>
+                            <Insets top="25" right="25" bottom="25" left="25" />
+                        </padding>
+
+                        <!-- العنوان -->
+                        <VBox spacing="10" alignment="CENTER">
+                            <Text text="📈 Advanced Reporting System"
+                                  style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #333;"/>
+                            <Text text="Generate comprehensive reports for better decision making"
+                                  style="-fx-font-size: 14px; -fx-fill: #666;"/>
+                        </VBox>
+
+                        <!-- بطاقات التقارير -->
+                        <GridPane hgap="20" vgap="20">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50"/>
+                                <ColumnConstraints percentWidth="50"/>
+                            </columnConstraints>
+
+                            <rowConstraints>
+                                <RowConstraints percentHeight="50"/>
+                                <RowConstraints percentHeight="50"/>
+                            </rowConstraints>
+
+                            <!-- التقرير المالي -->
+                            <VBox styleClass="report-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <Label text="💰" style="-fx-font-size: 32px;"/>
+                                    <VBox spacing="5">
+                                        <Label text="Financial Report"
+                                               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                        <Label text="Revenue, bookings, and financial analysis"
+                                               style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Generate Report" onAction="#handleGenerateFinancialReport"
+                                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <!-- تقرير الأسطول -->
+                            <VBox styleClass="report-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <Label text="🚗" style="-fx-font-size: 32px;"/>
+                                    <VBox spacing="5">
+                                        <Label text="Fleet Utilization Report"
+                                               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                        <Label text="Car availability and usage statistics"
+                                               style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Generate Report" onAction="#handleGenerateFleetReport"
+                                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <!-- تقرير الأداء -->
+                            <VBox styleClass="report-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <Label text="📊" style="-fx-font-size: 32px;"/>
+                                    <VBox spacing="5">
+                                        <Label text="Performance Report"
+                                               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                        <Label text="System performance and success rates"
+                                               style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Generate Report" onAction="#handleGeneratePerformanceReport"
+                                        style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <!-- تقرير الاتجاهات -->
+                            <VBox styleClass="report-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <Label text="📈" style="-fx-font-size: 32px;"/>
+                                    <VBox spacing="5">
+                                        <Label text="Seasonal Trends Report"
+                                               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                                        <Label text="Monthly trends and seasonal patterns"
+                                               style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Generate Report" onAction="#handleGenerateTrendsReport"
+                                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </GridPane>
+
+                        <!-- أزرار إضافية -->
+                        <VBox spacing="15" alignment="CENTER"
+                              style="-fx-padding: 20; -fx-background-color: #f8f9fa; -fx-background-radius: 10;">
+                            <Label text="⚡ Quick Actions" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                            <HBox spacing="20" alignment="CENTER">
+                                <Button text="📑 Generate All Reports" onAction="#handleGenerateAllReports"
+                                        style="-fx-background-color: #795548; -fx-text-fill: white; -fx-pref-width: 200;"/>
+                                <Button text="💾 Export Report" onAction="#handleExportReport"
+                                        style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-pref-width: 200;"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- ملاحظات -->
+                        <VBox spacing="10"
+                              style="-fx-padding: 15; -fx-background-color: #e8f5e8; -fx-background-radius: 8;">
+                            <Label text="💡 Report Features:" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+                            <VBox spacing="5" style="-fx-padding: 0 0 0 15;">
+                                <Label text="• Real-time data from database" style="-fx-text-fill: #555;"/>
+                                <Label text="• Export to text file (simulated)" style="-fx-text-fill: #555;"/>
+                                <Label text="• Copy to clipboard functionality" style="-fx-text-fill: #555;"/>
+                                <Label text="• Color-coded for easy reading" style="-fx-text-fill: #555;"/>
+                            </VBox>
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+
+
+            </Tab>
+            <!-- داخل TabPane في admin_dashboard.fxml -->
+            <Tab text="📊 Dashboard" closable="false">
+                <!-- في بداية تب Dashboard، أضف HBox للتحكم -->
+                <ScrollPane fitToWidth="true" fitToHeight="true">
+                    <VBox spacing="25">
+                        <padding>
+                            <Insets top="25" right="25" bottom="25" left="25" />
+                        </padding>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets bottom="15" />
+                            </padding>
+
+                            <Button text="🔄 Refresh Dashboard" onAction="#handleRefreshDashboard"
+                                    styleClass="primary-button" />
+                            <Label text="Updated: Just now" fx:id="dashboardUpdateTime"
+                                   style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                        </HBox>
+
+
+                        <!-- بطاقات الإحصاءات السريعة -->
+                        <HBox spacing="15">
+                            <VBox styleClass="stats-card">
+                                <prefWidth>200</prefWidth>
+                                <Label text="💰 Total Revenue" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                                <Label fx:id="totalRevenueLabel" text="0.00" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+                                <Label fx:id="revenueChangeLabel" text="+0%" style="-fx-text-fill: #888; -fx-font-size: 12px;" />
+                            </VBox>
+
+                            <VBox styleClass="stats-card">
+                                <prefWidth>200</prefWidth>
+                                <Label text="📈 Avg. Booking" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                                <Label fx:id="avgBookingLabel" text="0.00" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" />
+                                <Label text="per reservation" style="-fx-text-fill: #888; -fx-font-size: 12px;" />
+                            </VBox>
+
+                            <VBox styleClass="stats-card">
+                                <prefWidth>200</prefWidth>
+                                <Label text="🚗 Cars" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                                <Label fx:id="carsStatsLabel" text="0/0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" />
+                                <Label text="available/total" style="-fx-text-fill: #888; -fx-font-size: 12px;" />
+                            </VBox>
+
+                            <VBox styleClass="stats-card">
+                                <prefWidth>200</prefWidth>
+                                <Label text="👥 Customers" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                                <Label fx:id="customersLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #9C27B0;" />
+                                <Label text="registered" style="-fx-text-fill: #888; -fx-font-size: 12px;" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- الرسوم البيانية -->
+                        <GridPane hgap="15" vgap="15">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50" />
+                                <ColumnConstraints percentWidth="50" />
+                            </columnConstraints>
+
+                            <rowConstraints>
+                                <RowConstraints percentHeight="50" />
+                                <RowConstraints percentHeight="50" />
+                            </rowConstraints>
+
+                            <!-- مخطط الأعمدة: الحجوزات الشهرية -->
+                            <VBox styleClass="chart-container" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <Label text="📅 Monthly Reservations" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <BarChart fx:id="monthlyReservationsChart" legendVisible="false" animated="true">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                    </yAxis>
+                                </BarChart>
+                            </VBox>
+
+                            <!-- مخطط دائري: توزيع السيارات -->
+                            <VBox styleClass="chart-container" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <Label text="🚙 Car Distribution by Brand" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <PieChart fx:id="carDistributionChart" />
+                            </VBox>
+
+                            <!-- مخطط خطي: الإيرادات الشهرية -->
+                            <VBox styleClass="chart-container" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <Label text="💰 Monthly Revenue" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <LineChart fx:id="monthlyRevenueChart" legendVisible="false" animated="true">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                    </yAxis>
+                                </LineChart>
+                            </VBox>
+
+                            <!-- مخطط أعمدة: أكثر السيارات طلباً -->
+                            <VBox styleClass="chart-container" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label text="🏆 Most Rented Cars" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <BarChart fx:id="mostRentedCarsChart" legendVisible="false" animated="true">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                    </yAxis>
+                                </BarChart>
+                            </VBox>
+                        </GridPane>
+
+                        <!-- الجداول الإضافية -->
+                        <HBox spacing="15">
+                            <!-- أفضل العملاء -->
+                            <VBox styleClass="data-table-container">
+                                <prefWidth>400</prefWidth>
+                                <Label text="👑 Top Customers" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <TableView fx:id="topCustomersTable" prefHeight="250">
+                                    <columns>
+                                        <TableColumn text="Customer" prefWidth="200">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="customerName" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn text="Total Spent" prefWidth="150">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="totalSpent" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+
+                            <!-- إشعارات سريعة -->
+                            <VBox styleClass="notifications-container">
+                                <prefWidth>400</prefWidth>
+                                <Label text="🔔 Recent Activity" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                                <ListView fx:id="recentActivityList" prefHeight="250" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+    <!-- ====== FOOTER / STATUS BAR ====== -->
+    <HBox spacing="15" alignment="CENTER" styleClass="status-bar">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <Button text="✏️ Edit Selected Car"
+                onAction="#handleEditCar"
+                styleClass="primary-button"/>
+        <Button text="🗑️ Delete Selected Car"
+                onAction="#handleDeleteCar"
+                styleClass="danger-button"/>
+        <Button text="❌ Cancel Reservation"
+                onAction="#handleCancelReservationAdmin"
+                styleClass="warning-button"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label fx:id="statusLabel"
+               text="Admin Dashboard Ready"/>
+    </HBox>
+</VBox>

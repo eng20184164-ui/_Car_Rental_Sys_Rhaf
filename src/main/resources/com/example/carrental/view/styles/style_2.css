@@ -1,0 +1,171 @@
+/* ===== Customer Dashboard Styles ===== */
+
+.dashboard-header {
+    -fx-background-color: linear-gradient(to right, #2196F3, #1976D2);
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);
+}
+
+.dashboard-title {
+    -fx-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);
+    -fx-padding: 20;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+}
+
+.status-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ===== أزرار محسنة ===== */
+.primary-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1976D2;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.secondary-button {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #5a6268;
+}
+
+.success-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 10 20 10 20;
+}
+
+.success-button:hover {
+    -fx-background-color: #218838;
+    -fx-effect: dropshadow(gaussian, rgba(40, 167, 69, 0.3), 10, 0, 0, 3);
+}
+
+.danger-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.danger-button:hover {
+    -fx-background-color: #c82333;
+}
+
+/* ===== تحسين الجداول ===== */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-font-weight: bold;
+    -fx-text-fill: #495057;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: #f8f9fa;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: white;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 8 12 8 12;
+}
+
+/* ===== تحسين علامات التبويب ===== */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 0 0 0 20;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-color: #e9ecef;
+    -fx-background-radius: 8 8 0 0;
+    -fx-border-radius: 8 8 0 0;
+    -fx-padding: 8 16 8 16;
+    -fx-font-weight: bold;
+}
+
+.tab:selected {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.tab:hover {
+    -fx-background-color: #dee2e6;
+}
+
+.tab:selected:hover {
+    -fx-background-color: #1976D2;
+}
+
+/* ===== تحسين حقول الإدخال ===== */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12 8 12;
+}
+
+.text-field:focused {
+    -fx-border-color: #2196F3;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.2), 10, 0, 0, 0);
+}
