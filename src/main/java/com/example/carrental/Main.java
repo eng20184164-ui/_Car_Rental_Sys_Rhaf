@@ -55,5 +55,6 @@ public class Main extends Application {
         // تهيئة قاعدة البيانات
         com.example.carrental.database.DatabaseConnection.getInstance();
         launch(args);
+        //rahaf
     }
 }
